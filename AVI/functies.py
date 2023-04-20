@@ -1,4 +1,5 @@
 import string
+import re
 
 EASY_TEXT = """Ik hou van programmeren. Programmeren is leuk. 
 Ik kan veel dingen maken met programmeren. Ik kan een website maken. 
@@ -19,7 +20,6 @@ als je de reacties van je vrienden en familie ziet, als je ze verrast met je eig
 ALLOWED_IN_WORD = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
 
 # depending on the type of text you wish you get an easy, difficult or text from file.
-choice = ALLOWED_IN_WORD
 
 def getText(choice: str) -> str:
     if choice == 'easy':
@@ -38,14 +38,23 @@ def getFileContentAsString(textFile: str) -> str:
 def getNumberOfCharacters(text: str) -> int:
     translating = str.maketrans('', '', string.punctuation)
     new_string = text.translate(translating)
-    print(len(new_string))
+    return len(new_string)
 
 # opdracht 2
 def getNumberOfSentences(text: str) -> int:
-    return 0
+    count = 0
+
+    for x in text:
+        if x == "." or x == "!" or x == "?":
+            count += 1
+    return count
 
 # opdracht 3
 def getNumberOfWords(text: str) -> int:
-    return 0
+    count = 0
+    pattern = "^[a-zA-Z0-9_-]+$"
 
-getNumberOfCharacters(choice)
+    for x in pattern:
+        if x not in text:
+            count += 1
+    return count

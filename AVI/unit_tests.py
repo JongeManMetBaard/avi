@@ -1,6 +1,8 @@
 from functies import *
 
 # test 1: getNumberOfCharacters
+getNumberOfCharacters(getText("test.txt"))
+
 if getNumberOfCharacters('aap') == 3:
     print("Test geslaagd")
 else:
